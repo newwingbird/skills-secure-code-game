@@ -72,7 +72,7 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 		}
 
 		if password == storedPassword {
-			log.Printf("Login successful for email")
+			log.Printf("Successful login request")
 			w.WriteHeader(http.StatusOK)
 		} else {
 			http.Error(w, "Invalid Email or Password", http.StatusUnauthorized)
