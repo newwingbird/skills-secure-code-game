@@ -26,6 +26,7 @@ const upload = multer({ storage });
 
 app.post("/ufo/upload", upload.single("file"), (req, res) => {
   if (!req.file) {
+    // FIX This is unnecessary endpoint!
     return res.status(400).send("No file uploaded.");
   }
 
@@ -46,9 +47,9 @@ app.post("/ufo", (req, res) => {
   } else if (contentType === "application/xml") {
     try {
       const xmlDoc = libxmljs.parseXml(req.body, {
-        replaceEntities: true,
-        recover: true,
-        nonet: false,
+        replaceEntities: false,
+        recover: false,
+        nonet: true,
       });
 
       console.log("Received XML data from XMLon:", xmlDoc.toString());
